@@ -50,7 +50,7 @@ void plot::addplot(std::ofstream& myfile) {
 		myfile << "no marks,\n";
 	}
 	else if (marks_var == "only marks") {
-		myfile << "only marks, *\n";
+		myfile << "only marks, mark = *,\n";
 	}
 	else {
 		myfile << "mark = " << marks_var << ",\n";
