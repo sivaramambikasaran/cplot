@@ -3,65 +3,25 @@
 
 #include <fstream>
 #include <vector>
-// #include "plot.hpp"
-
-class plot {
-friend class cplot;
-public:
-	std::vector<double> xdata_var, ydata_var;
-	std::string marks_var, color_var;
-	bool smooth_var;
-// public:
-	void xdata(std::vector<double> xdata_var);
-	void ydata(std::vector<double> ydata_var);
-	void marks(std::string marks_var);
-	void color(std::string color_var);
-	void smooth(bool smooth_var);
-	plot();
-	~plot();
-};
-
-void plot::xdata(std::vector<double> xdata_var) {
-	this->xdata_var	=	xdata_var;
-}
-
-void plot::ydata(std::vector<double> ydata_var) {
-	this->ydata_var	=	ydata_var;
-}
-
-void plot::marks(std::string marks_var) {
-	this->marks_var	=	marks_var;
-}
-
-void plot::color(std::string color_var) {
-	this->color_var	=	color_var;
-}
-
-void plot::smooth(bool smooth_var) {
-	this->smooth_var=	smooth_var;
-}
-
-plot::plot() {	
-}
-
-plot::~plot() {	
-}
+#include "plot.hpp"
 
 class cplot{
-public:
+private:
 	std::ofstream myfile_var;
-	std::string title_var, xlabel_var, ylabel_var;
+	std::string title_var, xlabel_var, ylabel_var, legend_var;
 	double xmin, xmax, ymin, ymax;
+	double legend_loc_x, legend_loc_y;
+	std::string legend_anchor;
 	int nPlots;
-// public:
+public:
 	cplot(std::string filename);
 	~cplot();
 	void title(std::string title_var);
 	void xlabel(std::string xlabel_var);
 	void ylabel(std::string xlabel_var);
 	void axes(double xmin, double xmax, double ymin, double ymax);
-	void addplot(int j);
 	void makeplot();
+	void legend(std::string legend_var, double legend_loc_x, double legend_loc_y, std::string legend_anchor);
 	std::vector<plot> plots;
 };
 
@@ -94,17 +54,29 @@ void cplot::axes(double xmin, double xmax, double ymin, double ymax) {
 	this->ymax			=	ymax;
 }
 
+void cplot::legend(std::string legend_var, double legend_loc_x, double legend_loc_y, std::string legend_anchor) {
+	this->legend_var	=	legend_var;
+	this->legend_loc_x	=	legend_loc_x;
+	this->legend_loc_y	=	legend_loc_y;
+	this->legend_anchor	=	legend_anchor;
+}
+
 void cplot::makeplot() {
 	myfile_var << "title = " << title_var << ",\n";
 	myfile_var << "xlabel = {" << xlabel_var << "},\n";
 	myfile_var << "ylabel = {" << ylabel_var << "},\n";
 	myfile_var << "xmin	= " << xmin << ", " << "xmax = " << xmax << ",\n";
 	myfile_var << "ymin	= " << ymin << ", " << "ymax = " << ymax << ",\n";
+	myfile_var << "legend style ={\n";
+	myfile_var << "at={(" << legend_loc_x << ", " << legend_loc_y << ")},\n";
+	myfile_var << "anchor = " << legend_anchor << "\n";
+	myfile_var << "}\n";
 	myfile_var << "]\n";
 	this->nPlots	=	plots.size();
 	for (int j=0; j<nPlots; ++j) {
-		addplot(j);
+		plots[j].addplot(myfile_var);
 	}
+	myfile_var << "\\legend{" << legend_var << "};\n";
 }
 
 cplot::~cplot() {
@@ -112,20 +84,6 @@ cplot::~cplot() {
 	myfile_var << "\\end{tikzpicture}\n";
 	myfile_var << "\\end{document}\n";
 	myfile_var.close();
-}
-
-
-void cplot::addplot(int j) {
-	myfile_var << "\\addplot[\n";
-	myfile_var << plots[j].color_var << ", mark = " << plots[j].marks_var << ", ";
-	if (plots[j].smooth_var) {
-		myfile_var << "smooth, \n";
-	}
-	myfile_var << "] coordinates {\n";
-	for (int k=0; k<plots[j].xdata_var.size(); ++k) {
-		myfile_var << "\t(" << plots[j].xdata_var[k] << "," << plots[j].ydata_var[k] << ")\n";
-	}
-	myfile_var << "};\n";
 }
 
 #endif /*_CPLOT__HPP_*/
