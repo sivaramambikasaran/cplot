@@ -21,4 +21,4 @@ The class `cplot` is the canvas and the class `plot` is the individual plot.
 
 The plot generated from the individual file is shown below:
 
-![Trignometric plots](https://github.com/sivaramambikasaran/cplot/blob/master/trig.pdf)
+![Trignometric plots](https://github.com/sivaramambikasaran/cplot/blob/master/trig.png)
