@@ -31,3 +31,4 @@
 # Log files
 *.log
 *.aux
+.DS_Store
