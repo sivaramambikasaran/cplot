@@ -1,7 +1,7 @@
 # CPLOT
 ===
 
-Enables easy plotting from C++. This creates plots using tikz/pgfplots. Currently, it can only handle 2D plots of the form `y` versus `x`. The library provides methods to write the plot to a .tex file, which can be compiled with a latex compiler such as pdflatex, for instance, to generate the plot.
+Enables easy plotting from C++. This creates plots using tikz/pgfplots. Currently, it can only handle 2D plots of the form `y` versus `x` (more features to be added latter). The library provides methods to write the plot to a .tex file, which can be compiled with a latex compiler such as pdflatex, for instance, to generate the plot.
 
 This is a pure header only library and hence using this is pretty straight forward. There is no binary library to link to, no configured header file and all that annoying s$!t.
 
@@ -18,6 +18,8 @@ An example file can be found inside the folder named `examples`.
 Broadly speaking there are two classes; one for the canvas on which the plots are drawn and another one for the individual curves themselves.
 
 The class `cplot` is the canvas and the class `plot` is the individual plot.
+
+More documentation to follow soon. In the meantime, you can browse through the header files in the `CPLOT` directory to decipher the features.
 
 The plot generated from the individual file is shown below:
 
