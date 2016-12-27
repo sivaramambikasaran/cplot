@@ -23,4 +23,5 @@ More documentation to follow soon. In the meantime, you can browse through the h
 
 The plot generated from the individual file is shown below:
 
+####Trigonometric plots
 ![Trignometric plots](https://github.com/sivaramambikasaran/cplot/blob/master/trig.png)
