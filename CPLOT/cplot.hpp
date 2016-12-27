@@ -3,7 +3,7 @@
 
 #include <fstream>
 #include <vector>
-#include "plot.hpp"
+#include "CPLOT/plot.hpp"
 
 class cplot{
 private:

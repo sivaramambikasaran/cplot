@@ -1,5 +1,5 @@
 CC			=	g++-6
-CFLAGS		=	-c -Wall -Ofast -I ./CPLOT/
+CFLAGS		=	-c -Wall -Ofast -I ./
 LDFLAGS		=	
 SOURCES		=	./examples/example.cpp
 OBJECTS		=	$(SOURCES:.cpp=.o)

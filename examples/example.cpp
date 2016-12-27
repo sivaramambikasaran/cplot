@@ -2,7 +2,7 @@
 #include <vector>
 #include <cstdlib>
 #include <cmath>
-#include "cplot.hpp"
+#include "CPLOT/cplot.hpp"
 
 int main() {
 	srand(time(NULL));
