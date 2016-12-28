@@ -9,7 +9,7 @@ To use cplot, download the repository and copy the folder `CPLOT` to the desired
 
 	g++-6 -I /path/to/cplot myprogram.cpp -o myprogram
 
-On Linux or Mac OS X, another option is to cymlink or copy the folder `CPLOT` into `/usr/local/include/`. This way you can compile the program as:
+On Linux or Mac OS X, another option is to symlink or copy the folder `CPLOT` into `/usr/local/include/`. This way you can compile the program as:
 
 	g++-6 myprogram.cpp -o myprogram
 
