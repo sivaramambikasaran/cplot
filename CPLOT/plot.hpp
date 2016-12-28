@@ -1,3 +1,6 @@
+#ifndef _PLOT__HPP_
+#define _PLOT__HPP_
+
 #include <fstream>
 #include <vector>
 
@@ -77,3 +80,5 @@ plot::plot() {
 
 plot::~plot() {	
 }
+
+#endif //_PLOT__HPP_

@@ -86,4 +86,4 @@ cplot::~cplot() {
 	myfile_var.close();
 }
 
-#endif /*_CPLOT__HPP_*/
+#endif //_CPLOT__HPP_
